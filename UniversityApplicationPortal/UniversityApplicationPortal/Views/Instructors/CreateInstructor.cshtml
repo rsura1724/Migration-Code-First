@@ -1,0 +1,27 @@
+﻿@model UniversityApplicationPortal.ViewModels.InstructorFormViewModel
+@{
+    ViewBag.Title = "CreateInstructor";
+}
+
+<h2>CreateInstructor</h2>
+
+@using (Html.BeginForm("CreateInstructor", "Instructors"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.InstructorName)
+        @Html.TextBoxFor(m => m.InstructorName , new{@class="form-control"})
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Designation)
+        @Html.TextBoxFor(m => m.Designation, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Department)
+        @Html.DropDownListFor(m => m.Department, 
+       new SelectList(Model.Departments, "Id", "DepartmentName"),
+       "Select Department", new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+
+
